@@ -28,22 +28,16 @@ class Player:
     def draw(self):
         pygame.draw.rect(display, white, self.rect, 2)
 
-class Rocks:
-    def __init__(self,x,y):
-        self.x = x
-        self.y = y
-        self.image = pygame.image.load('img/Rock.png')
-        self.rect = self.image.get_rect()
+
 
 # Game variables
 player = Player(SCREEN_WIDTH / 2, 50)
-rock = Rocks(random.randrange(50 ,SCREEN_WIDTH - 50), SCREEN_HEIGHT)
+
 x = SCREEN_WIDTH / 2
 y = 200
 facing = 'right'
 temp_image = player.image
-rock_x = int
-rock_y = int
+
 
 # Functions
 def move(facing):
@@ -74,11 +68,7 @@ while True:
     display.fill(blue)
     player.draw()
 
-    if rock.y == -20:
-        rock = spawn(rock)
-
     player.rect = (player.x - 23, player.y, 46,41)
-    rock.rect = (rock.x, rock.y, 20,20)
 
     if wrap(player.x) == 'WrapToRight':
         player.x =  SCREEN_WIDTH - 1
