@@ -29,10 +29,9 @@ class Player:
         pygame.draw.rect(display, white, self.rect, 2)
 
 
-
 # Game variables
 player = Player(SCREEN_WIDTH / 2, 50)
-
+pygame.image.load('img/Rock.png')
 x = SCREEN_WIDTH / 2
 y = 200
 facing = 'right'
