@@ -9,6 +9,7 @@ SCREEN_WIDTH = 800
 SCREEN_HEIGHT = 750
 display = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 pygame.display.set_caption("Raft Along")
+pygame.font.init()
 
 # Defining some colors
 white = (255,255,255)
@@ -24,6 +25,8 @@ x = SCREEN_WIDTH / 2
 y = 100
 rock_x = randrange(6, SCREEN_WIDTH - 52)
 rock_y = SCREEN_HEIGHT - 25
+score = 0
+font = pygame.font.SysFont('freesansbold.ttf', 32)
 
 # Functions
 def player_render(player_image, x, y):
@@ -57,13 +60,18 @@ while True:
     player_rect = pygame.Rect(x, y, 46, 41)
     rock_rect = pygame.Rect(rock_x + 40, rock_y, 320, 280)
 
+    text = font.render('Current Score: ' + str(score), True, green, blue)
+    textRect = text.get_rect()
+
     display.fill(blue)
+    display.blit(text, textRect)
     player_render(player_image, x, y)
     rock_y = rock_move(rock_y)
     rock_draw(rock_x, rock_y)
     if rock_y < -300:
         rock_x = randrange(6, SCREEN_WIDTH - 700)
         rock_y = SCREEN_HEIGHT - 25
+        score += 1
 
     if move(x) == 1:
         if x > 6:
