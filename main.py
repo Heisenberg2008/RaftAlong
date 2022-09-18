@@ -63,11 +63,6 @@ while True:
     text = font.render('Current Score: ' + str(score), True, green, blue)
     textRect = text.get_rect()
 
-    display.fill(blue)
-    display.blit(text, textRect)
-    player_render(player_image, x, y)
-    rock_y = rock_move(rock_y)
-    rock_draw(rock_x, rock_y)
     if rock_y < -300:
         rock_x = randrange(6, SCREEN_WIDTH - 700)
         rock_y = SCREEN_HEIGHT - 25
@@ -91,6 +86,12 @@ while True:
     pygame.draw.rect(display, red, (rock_rect), 2)
 
     # Display update stuff
+    display.fill(blue)
+    display.blit(text, textRect)
+    player_render(player_image, x, y)
+    rock_y = rock_move(rock_y)
+    rock_draw(rock_x, rock_y)
+
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             sys.exit()
